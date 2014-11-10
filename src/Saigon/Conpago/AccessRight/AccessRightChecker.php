@@ -9,7 +9,7 @@
 	namespace Saigon\Conpago\AccessRight;
 
 	use Saigon\Conpago\AccessRight\Contract\IAccessRightChecker;
-	use Saigon\Conpago\Auth\Contract\ISessionManager;
+	use Saigon\Conpago\AccessRight\Contract\IRolesConfig;
 
 	class AccessRightChecker implements IAccessRightChecker
 	{
