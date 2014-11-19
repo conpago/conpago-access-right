@@ -17,6 +17,7 @@
 	class AccessRightChecker implements IAccessRightChecker
 	{
 		const USER_IS_NOT_A_CORRECT_ACCESS_RIGHT_REQUESTER = 'User is not a correct AccessRight requester.';
+		const All_ACCESS_RIGHTS = '*';
 		/**
 		 * @var ISessionManager
 		 */
@@ -64,11 +65,7 @@
 				$role = $roles[$roleName];
 
 				$roleAccessRights = $role->getAccessRights();
-				$in_array = in_array('*', $roleAccessRights);
-				if ($in_array)
-					return true;
-
-				if (in_array($accessRight, $role->getAccessRights()))
+				if (in_array(self::All_ACCESS_RIGHTS, $roleAccessRights) || in_array($accessRight, $role->getAccessRights()))
 					return true;
 			}
 			return false;

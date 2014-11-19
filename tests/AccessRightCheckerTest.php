@@ -11,7 +11,6 @@
 	class AccessRightCheckerTest extends PHPUnit_Framework_TestCase
 	{
 		const ACCESS_RIGHT_NAME = 'accessRightName';
-		const All_ACCESS_RIGHTS = '*';
 
 		function testCheckWillReturnFalseIfNotLogged()
 		{
@@ -66,7 +65,7 @@
 			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
 
 			$role = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRole');
-			$role->expects($this->any())->method('getAccessRights')->willReturn(array(self::All_ACCESS_RIGHTS));
+			$role->expects($this->any())->method('getAccessRights')->willReturn(array(AccessRightChecker::All_ACCESS_RIGHTS));
 
 			$rolesConfig->expects($this->any())->method('getRoles')->willReturn(array("role1" => $role));
 
