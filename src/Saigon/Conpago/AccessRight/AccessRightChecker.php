@@ -8,6 +8,7 @@
 
 	namespace Saigon\Conpago\AccessRight;
 
+	use Saigon\Conpago\AccessRight\Contract\Exceptions\CurrentLoggedUserNotImplementAccessRightRequesterException;
 	use Saigon\Conpago\AccessRight\Contract\IAccessRightChecker;
 	use Saigon\Conpago\AccessRight\Contract\IAccessRightRequester;
 	use Saigon\Conpago\AccessRight\Contract\IRolesConfig;
@@ -50,12 +51,16 @@
 
 			$accessRightRequester = $this->sessionManager->getCurrentUser();
 			if (!$accessRightRequester instanceof IAccessRightRequester)
-				throw new \Exception(self::USER_IS_NOT_A_CORRECT_ACCESS_RIGHT_REQUESTER);
+				throw new CurrentLoggedUserNotImplementAccessRightRequesterException(self::USER_IS_NOT_A_CORRECT_ACCESS_RIGHT_REQUESTER);
 
 			$userRoles = $accessRightRequester->getRoles();
 			foreach($userRoles as $roleName)
 			{
 				$roles = $this->rolesConfig->getRoles();
+
+				if ($roles == null || !array_key_exists($roleName, $roles))
+					return false;
+
 				$role = $roles[$roleName];
 
 				$roleAccessRights = $role->getAccessRights();
