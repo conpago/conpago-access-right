@@ -14,17 +14,22 @@
 		{
 			"type": "vcs",
 			"url": "http://scm.golek.biz/scm/hg/Conpago.AccessRight.Contract"
+		},
+		{
+			"type": "vcs",
+			"url": "http://scm.golek.biz/scm/hg/Conpago.Auth.Contract"
 		}
 	],
 	"require": {
-		"saigon/conpago-accessright-contract": "dev-master"
+		"saigon/conpago-accessright-contract": "dev-master",
+		"saigon/conpago-auth-contract": "dev-master"
 	},
 	"require-dev": {
-		"pdepend/pdepend": "2.0.0",
-		"phpmd/phpmd": "2.0.0",
-		"squizlabs/php_codesniffer": "1.5.3",
-		"sebastian/phpcpd": "2.0.1",
-		"phpunit/phpunit": "4.1.1"
+		"pdepend/pdepend": "*",
+		"phpmd/phpmd": "*",
+		"squizlabs/php_codesniffer": "*",
+		"sebastian/phpcpd": "*",
+		"phpunit/phpunit": "4.*"
 	},
 	"autoload": {
 		"psr-0": {

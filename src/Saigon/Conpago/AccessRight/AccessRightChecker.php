@@ -9,7 +9,9 @@
 	namespace Saigon\Conpago\AccessRight;
 
 	use Saigon\Conpago\AccessRight\Contract\IAccessRightChecker;
+	use Saigon\Conpago\AccessRight\Contract\IAccessRightRequester;
 	use Saigon\Conpago\AccessRight\Contract\IRolesConfig;
+	use Saigon\Conpago\Auth\Contract\ISessionManager;
 
 	class AccessRightChecker implements IAccessRightChecker
 	{
@@ -46,10 +48,11 @@
 			if (!$this->sessionManager->isLoggedIn())
 				return false;
 
-			if (!$this->sessionManager->getCurrentUser() instanceof IAccessRightRequester)
+			$accessRightRequester = $this->sessionManager->getCurrentUser();
+			if (!$accessRightRequester instanceof IAccessRightRequester)
 				throw new \Exception(self::USER_IS_NOT_A_CORRECT_ACCESS_RIGHT_REQUESTER);
 
-			$userRoles = $this->sessionManager->getCurrentUser()->getRoles();
+			$userRoles = $accessRightRequester->getRoles();
 			foreach($userRoles as $roleName)
 			{
 				$roles = $this->rolesConfig->getRoles();
