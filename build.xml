@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<project name="Conpago.Auth" default="build" basedir=".">
-	<description>TeamMate</description>
+<project name="Conpago.AccessRight" default="build" basedir=".">
+	<description>Conpago.AccessRight</description>
 
 	<property name="src" location="src"/>
 	<property name="lib" location="lib"/>
