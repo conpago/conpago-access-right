@@ -1,8 +1,9 @@
 {
 	"name": "saigon/conpago-accessright",
-	"description": "Conpago.AccessRight",
+	"description": "Conpago framework AccessRight management.",
 	"version": "0.0.1-alpha",
 	"type": "library",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Bartosz Gołek",
@@ -10,19 +11,9 @@
 			"homepage": "http://bartosz.golek.biz"
 		}
 	],
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "http://scm.golek.biz/scm/hg/Conpago.AccessRight.Contract"
-		},
-		{
-			"type": "vcs",
-			"url": "http://scm.golek.biz/scm/hg/Conpago.Auth.Contract"
-		}
-	],
 	"require": {
-		"saigon/conpago-accessright-contract": "dev-master",
-		"saigon/conpago-auth-contract": "dev-master"
+		"saigon/conpago-accessright-contract": "dev-default",
+		"saigon/conpago-auth-contract": "dev-default"
 	},
 	"require-dev": {
 		"pdepend/pdepend": "*",

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="Conpago.AccessRight" default="build" basedir=".">
-	<description>Conpago.AccessRight</description>
+	<description>Conpago framework AccessRight management.</description>
 
 	<property name="src" location="src"/>
 	<property name="lib" location="lib"/>
