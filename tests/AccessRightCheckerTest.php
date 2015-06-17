@@ -1,6 +1,6 @@
 <?php
-	use Saigon\Conpago\AccessRight\AccessRightChecker;
-	use Saigon\Conpago\AccessRight\Contract\IAccessRightRequester;
+	use Conpago\AccessRight\AccessRightChecker;
+	use Conpago\AccessRight\Contract\IAccessRightRequester;
 
 	/**
 	 * Created by PhpStorm.
@@ -14,10 +14,10 @@
 
 		function testCheckWillReturnFalseIfNotLogged()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(false);
 
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
 
 			$accessRightChecker = new AccessRightChecker($sessionManager, $rolesConfig);
@@ -26,14 +26,14 @@
 		}
 
 		/**
-		 * @expectedException \Saigon\Conpago\AccessRight\Contract\Exceptions\CurrentLoggedUserNotImplementAccessRightRequesterException
+		 * @expectedException \Conpago\AccessRight\Contract\Exceptions\CurrentLoggedUserNotImplementAccessRightRequesterException
 		 */
 		function testCheckThrowsExceptionIfLoggedUserNotImplementRequester()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(true);
 			$sessionManager->expects($this->any())->method('getCurrentUser')->willReturn(new TestBadFakeUser());
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
 			$accessRightChecker = new AccessRightChecker($sessionManager, $rolesConfig);
 
@@ -42,12 +42,12 @@
 
 		function testCheckWillReturnTrueWhenUserHasRoleWithAccessRight()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(true);
 			$sessionManager->expects($this->any())->method('getCurrentUser')->willReturn(new TestCorrectFakeUser());
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
-			$role = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRole');
+			$role = $this->getMock('Conpago\AccessRight\Contract\IRole');
 			$role->expects($this->any())->method('getAccessRights')->willReturn(array(self::ACCESS_RIGHT_NAME));
 
 			$rolesConfig->expects($this->any())->method('getRoles')->willReturn(array("role1" => $role));
@@ -59,12 +59,12 @@
 
 		function testCheckWillReturnTrueWhenUserHasRoleWithAllAccessRights()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(true);
 			$sessionManager->expects($this->any())->method('getCurrentUser')->willReturn(new TestCorrectFakeUser());
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
-			$role = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRole');
+			$role = $this->getMock('Conpago\AccessRight\Contract\IRole');
 			$role->expects($this->any())->method('getAccessRights')->willReturn(array(AccessRightChecker::All_ACCESS_RIGHTS));
 
 			$rolesConfig->expects($this->any())->method('getRoles')->willReturn(array("role1" => $role));
@@ -76,12 +76,12 @@
 
 		function testCheckWillReturnFalseWhenUserHasRoleWithoutAccessRight()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(true);
 			$sessionManager->expects($this->any())->method('getCurrentUser')->willReturn(new TestCorrectFakeUser());
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
-			$role = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRole');
+			$role = $this->getMock('Conpago\AccessRight\Contract\IRole');
 			$role->expects($this->any())->method('getAccessRights')->willReturn(array());
 
 			$rolesConfig->expects($this->any())->method('getRoles')->willReturn(array("role1" => $role));
@@ -93,10 +93,10 @@
 
 		function testCheckWillReturnFalseWhenUserHasNoRole()
 		{
-			$sessionManager = $this->getMock('Saigon\Conpago\Auth\Contract\ISessionManager');
+			$sessionManager = $this->getMock('Conpago\Auth\Contract\ISessionManager');
 			$sessionManager->expects($this->any())->method('isLoggedIn')->willReturn(true);
 			$sessionManager->expects($this->any())->method('getCurrentUser')->willReturn(new TestCorrectFakeUser());
-			$rolesConfig = $this->getMock('Saigon\Conpago\AccessRight\Contract\IRolesConfig');
+			$rolesConfig = $this->getMock('Conpago\AccessRight\Contract\IRolesConfig');
 
 			$rolesConfig->expects($this->any())->method('getRoles')->willReturn(array());
 

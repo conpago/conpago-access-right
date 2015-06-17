@@ -6,10 +6,10 @@
 	 * Time: 00:48
 	 */
 
-	namespace Saigon\Conpago\AccessRight;
+	namespace Conpago\AccessRight;
 
 
-	use Saigon\Conpago\AccessRight\Contract\IRole;
+	use Conpago\AccessRight\Contract\IRole;
 
 	class Role implements IRole
 	{

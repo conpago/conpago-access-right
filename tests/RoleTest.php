@@ -1,5 +1,5 @@
 <?php
-	use Saigon\Conpago\AccessRight\Role;
+	use Conpago\AccessRight\Role;
 
 	/**
 	 * Created by PhpStorm.

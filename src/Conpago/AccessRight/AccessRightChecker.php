@@ -6,13 +6,13 @@
 	 * Time: 15:30
 	 */
 
-	namespace Saigon\Conpago\AccessRight;
+	namespace Conpago\AccessRight;
 
-	use Saigon\Conpago\AccessRight\Contract\Exceptions\CurrentLoggedUserNotImplementAccessRightRequesterException;
-	use Saigon\Conpago\AccessRight\Contract\IAccessRightChecker;
-	use Saigon\Conpago\AccessRight\Contract\IAccessRightRequester;
-	use Saigon\Conpago\AccessRight\Contract\IRolesConfig;
-	use Saigon\Conpago\Auth\Contract\ISessionManager;
+	use Conpago\AccessRight\Contract\Exceptions\CurrentLoggedUserNotImplementAccessRightRequesterException;
+	use Conpago\AccessRight\Contract\IAccessRightChecker;
+	use Conpago\AccessRight\Contract\IAccessRightRequester;
+	use Conpago\AccessRight\Contract\IRolesConfig;
+	use Conpago\Auth\Contract\ISessionManager;
 
 	class AccessRightChecker implements IAccessRightChecker
 	{

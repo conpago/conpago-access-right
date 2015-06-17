@@ -1,5 +1,5 @@
 {
-	"name": "saigon/conpago-accessright",
+	"name": "conpago/conpago-accessright",
 	"description": "Conpago framework AccessRight management.",
 	"version": "0.0.1-alpha",
 	"type": "library",
@@ -12,8 +12,8 @@
 		}
 	],
 	"require": {
-		"saigon/conpago-accessright-contract": "dev-default",
-		"saigon/conpago-auth-contract": "dev-default"
+		"conpago/conpago-accessright-contract": "dev-default",
+		"conpago/conpago-auth-contract": "dev-default"
 	},
 	"require-dev": {
 		"pdepend/pdepend": "*",
@@ -24,7 +24,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Saigon\\Conpago\\AccessRight\\": "src/"
+			"Conpago\\AccessRight\\": "src/"
 		}
 	}
 }
