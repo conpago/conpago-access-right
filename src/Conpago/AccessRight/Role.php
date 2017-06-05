@@ -1,51 +1,47 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: Bartosz Gołek
-	 * Date: 29.11.13
-	 * Time: 00:48
-	 */
+    /**
+     * Created by PhpStorm.
+     * User: Bartosz Gołek
+     * Date: 29.11.13
+     * Time: 00:48
+     */
 
-	namespace Conpago\AccessRight;
+    namespace Conpago\AccessRight;
 
+    use Conpago\AccessRight\Contract\IRole;
 
-	use Conpago\AccessRight\Contract\IRole;
+class Role implements IRole
+{
 
-	class Role implements IRole
-	{
+    /** @var string */
+    private $name;
 
-		/**
-		 * @var string
-		 */
-		private $name;
-		/**
-		 * @var string[]
-		 */
-		private $accessRights;
+    /** @var string[] */
+    private $accessRights;
 
-		/**
-		 * @param string $name
-		 * @param string[] $accessRights
-		 */
-		function __construct($name, array $accessRights)
-		{
-			$this->name = $name;
-			$this->accessRights = $accessRights;
-		}
+    /**
+     * @param string $name
+     * @param string[] $accessRights
+     */
+    public function __construct(string $name, array $accessRights)
+    {
+        $this->name = $name;
+        $this->accessRights = $accessRights;
+    }
 
-		/**
-		 * @return string
-		 */
-		function getRoleName()
-		{
-			return $this->name;
-		}
+    /**
+     * @return string
+     */
+    public function getRoleName(): string
+    {
+        return $this->name;
+    }
 
-		/**
-		 * @return string[]
-		 */
-		function getAccessRights()
-		{
-			return $this->accessRights;
-		}
-	}
+    /**
+     * @return string[]
+     */
+    public function getAccessRights(): array
+    {
+        return $this->accessRights;
+    }
+}
